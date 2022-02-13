@@ -54,3 +54,26 @@ oHare$day <- wday(oHare$date, label=TRUE)
 
 # write "O'Hare" ridership data to a file
 write.table(oHare, "oHare.csv", sep="\t", row.names=FALSE)
+
+
+#
+# isolate data records specific to station Racine
+rac<-ridership[ridership$stationname == "Racine",]
+
+# convert date to Date type
+rac$date<-mdy(rac$date)
+
+# order in by date
+rac<-oHare[order(rac$date),]
+
+# add column for just year
+rac$year <- year(rac$date)
+
+# add column for just month
+rac$month <- month(rac$date)
+
+# add day of the week column
+rac$day <- wday(rac$date, label=TRUE)
+
+# write Racine ridership data to a file
+write.table(rac, "racine.csv", sep="\t", row.names=FALSE)

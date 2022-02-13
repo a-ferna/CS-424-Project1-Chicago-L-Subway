@@ -28,12 +28,20 @@ oHare<-read.table("oHare.csv", sep = "\t", header = TRUE, quote = "\"")
 oHare$date<- as.Date(oHare$date, format="%Y-%m-%d")
 
 
+#
+# to load "Racine"
+rac<-read.table("racine.csv", sep = "\t", header = TRUE, quote = "\"")
+
+# convert string to Date type
+rac$date<- as.Date(rac$date, format="%Y-%m-%d")
+
+
 #########################################################################
 
 # # Variables
 
 years<-c(2001:2021)
-stations<-c("UIC-Halsted", "O'Hare")
+stations<-c("UIC-Halsted", "O'Hare", "Racine")
 options<-c("Yearly", "Daily", "Monthly", "Day of Week")
 
 #####################################################################
@@ -43,6 +51,15 @@ ui <- dashboardPage(
   dashboardHeader(title="Chicago L Subway", titleWidth = 200),
   dashboardSidebar(
     
+    menuItem("", tabName = "cheapBlankSpace", icon = NULL),
+    menuItem("", tabName = "cheapBlankSpace", icon = NULL),
+    menuItem("", tabName = "cheapBlankSpace", icon = NULL),
+    menuItem("", tabName = "cheapBlankSpace", icon = NULL),
+    menuItem("", tabName = "cheapBlankSpace", icon = NULL),
+    menuItem("", tabName = "cheapBlankSpace", icon = NULL),
+    menuItem("", tabName = "cheapBlankSpace", icon = NULL),
+    menuItem("", tabName = "cheapBlankSpace", icon = NULL),
+    menuItem("", tabName = "cheapBlankSpace", icon = NULL),
     menuItem("", tabName = "cheapBlankSpace", icon = NULL),
     menuItem("", tabName = "cheapBlankSpace", icon = NULL),
     menuItem("", tabName = "cheapBlankSpace", icon = NULL),
@@ -60,6 +77,20 @@ ui <- dashboardPage(
     menuItem("", tabName = "cheapBlankSpace", icon = NULL),
     menuItem("", tabName = "cheapBlankSpace", icon = NULL),
     menuItem("", tabName = "cheapBlankSpace", icon = NULL),
+    menuItem("", tabName = "cheapBlankSpace", icon = NULL),
+    menuItem("", tabName = "cheapBlankSpace", icon = NULL),
+    menuItem("", tabName = "cheapBlankSpace", icon = NULL),
+    menuItem("", tabName = "cheapBlankSpace", icon = NULL),
+    menuItem("", tabName = "cheapBlankSpace", icon = NULL),
+    menuItem("", tabName = "cheapBlankSpace", icon = NULL),
+    menuItem("", tabName = "cheapBlankSpace", icon = NULL),
+    menuItem("", tabName = "cheapBlankSpace", icon = NULL),
+    menuItem("", tabName = "cheapBlankSpace", icon = NULL),
+    menuItem("", tabName = "cheapBlankSpace", icon = NULL),
+    menuItem("", tabName = "cheapBlankSpace", icon = NULL),
+    menuItem("", tabName = "cheapBlankSpace", icon = NULL),
+    
+  
     
     selectInput("station2", "Select station", stations, selected = "O'Hare"),
     
@@ -72,40 +103,40 @@ ui <- dashboardPage(
     fluidRow(
       column(width = 3,
           
-            selectInput("sta1_g1", "Plot", options, selected = "Yearly", width = 100),
+            # selectInput("sta1_g1", "Plot", options, selected = "Yearly", width = 100),
              
             box(width = NULL,
-               plotOutput("s1_p1", height = 200)
+               plotOutput("s1_p1", height = 250)
             ),
             
             box(dataTableOutput("s1_t1", height=200), width=100)
       ),
       column(width = 3,
              
-            selectInput("sta1_g2", "Plot", options, selected = "Daily", width = 100),
+            # selectInput("sta1_g2", "Plot", options, selected = "Daily", width = 100),
             
             box(width = NULL,
-                plotOutput("s1_p2", height = 200)
+                plotOutput("s1_p2", height = 250)
             ),
             
             box(dataTableOutput("s1_t2", height=200), width=100)
       ),
       column(width = 3,
              
-            selectInput("sta1_g3", "Plot", options, selected = "Monthly", width = 100),
+            # selectInput("sta1_g3", "Plot", options, selected = "Monthly", width = 100),
             
             box(width=NULL,
-                plotOutput("s1_p3", height = 200)
+                plotOutput("s1_p3", height = 250)
             ),
             
             box(dataTableOutput("s1_t3", height=200), width=100)
       ),
       column(width = 3,
 
-             selectInput("sta1_g4", "Plot", options, selected = "Monthly", width = 100),
+             # selectInput("sta1_g4", "Plot", options, selected = "Monthly", width = 100),
 
              box(width=NULL,
-                 plotOutput("s1_p4", height = 200)
+                 plotOutput("s1_p4", height = 250)
              ),
 
              box(dataTableOutput("s1_t4", height=200), width=100)
@@ -115,40 +146,40 @@ ui <- dashboardPage(
     fluidRow(
       column(width = 3,
              
-             selectInput("sta2_g1", "Plot", options, selected = "Yearly", width = 100),
+             # selectInput("sta2_g1", "Plot", options, selected = "Yearly", width = 100),
              
              box(width = NULL,
-                 plotOutput("s2_p1", height = 200)
+                 plotOutput("s2_p1", height = 250)
              ),
              
              box(dataTableOutput("s2_t1", height=200), width=100)
       ),
       column(width = 3,
              
-             selectInput("sta2_g2", "Plot", options, selected = "Daily", width = 100),
+             # selectInput("sta2_g2", "Plot", options, selected = "Daily", width = 100),
              
              box(width = NULL,
-                 plotOutput("s2_p2", height = 200)
+                 plotOutput("s2_p2", height = 250)
              ),
              
              box(dataTableOutput("s2_t2", height=200), width=100)
       ),
       column(width = 3,
              
-             selectInput("sta2_g3", "Plot", options, selected = "Monthly", width = 100),
+             # selectInput("sta2_g3", "Plot", options, selected = "Monthly", width = 100),
              
              box(width=NULL,
-                 plotOutput("s2_p3", height = 200)
+                 plotOutput("s2_p3", height = 250)
              ),
              
              box(dataTableOutput("s2_t3", height=200), width=100)
       ),
       column(width = 3,
              
-             selectInput("sta2_g4", "Plot", options, selected = "Monthly", width = 100),
+             # selectInput("sta2_g4", "Plot", options, selected = "Monthly", width = 100),
              
              box(width=NULL,
-                 plotOutput("s2_p4", height = 200)
+                 plotOutput("s2_p4", height = 250)
              ),
              
              box(dataTableOutput("s2_t4", height=200), width=100)
@@ -169,6 +200,9 @@ server <- function(input, output) {
   oHareYearly<-aggregate(oHare$rides, list(oHare$year), FUN=sum)
   colnames(oHareYearly)<- c("year", "totalRides")
   
+  racYearly<-aggregate(rac$rides, list(rac$year), FUN=sum)
+  colnames(racYearly)<- c("year", "totalRides")
+  
   
   # bar plots of YEARLY ridership
   uicByYear<-ggplot(uicHalstedYearly, aes(x=year, y=totalRides))+
@@ -179,6 +213,9 @@ server <- function(input, output) {
                geom_bar(stat="identity", width=0.8, fill="skyblue2")+
                labs(x="Year", y="Riders", title="Yearly Ridership at O'Hare station")
   
+  racByYear<-ggplot(racYearly, aes(x=year, y=totalRides))+
+    geom_bar(stat="identity", width=0.8, fill="yellow3")+
+    labs(x="Year", y="Riders", title="Yearly Ridership at Racine station")
   
 ##############################################################################
   
@@ -193,6 +230,10 @@ server <- function(input, output) {
     {
       oHareByYear
     }
+    else if (input$station1 == "Racine")
+    {
+      racByYear
+    }
   })
   
   
@@ -206,6 +247,10 @@ server <- function(input, output) {
       else if (input$station1 == "O'Hare")
       {
         t<-oHareYearly
+      }
+      else if (input$station1 == "Racine")
+      {
+        t<-racYearly
       }
       
       t<-as.data.frame(t)
@@ -237,6 +282,15 @@ server <- function(input, output) {
         scale_x_date(date_labels = "%b")+
         labs(x='Date', y='Riders', title="Daily Riders of O'Hare Station")
     }
+    else if (input$station1 == "Racine") {
+      
+      racYear<-rac[rac$year == input$yearToPlot1, ]
+      
+      ggplot(racYear, aes(x=date, y=rides))+
+        geom_bar(stat="identity", fill="yellow3")+
+        scale_x_date(date_labels = "%b")+
+        labs(x='Date', y='Riders', title="Daily Riders of Racine Station")
+    }
   })
   
   
@@ -250,6 +304,10 @@ server <- function(input, output) {
       else if (input$station1 == "O'Hare")
       {
         t<-oHare[oHare$year == input$yearToPlot1, c("date", "rides")]
+      }
+      else if (input$station1 == "Racine")
+      {
+        t<-rac[rac$year == input$yearToPlot1, c("date", "rides")]
       }
       
       t<-as.data.frame(t)
@@ -284,7 +342,17 @@ server <- function(input, output) {
         geom_bar(stat="identity", fill="skyblue2")+
         scale_x_discrete(limits=c("Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"))+
         labs(x="Month", y="Riders", title="Monthly Ridership at O'Hare station")
+    }
+    else if (input$station1 == "Racine") {
       
+      racYear<-rac[rac$year == input$yearToPlot1, ]
+      racMonth<-aggregate(racYear$rides, list(racYear$month), FUN=sum)
+      colnames(racMonth) <- c("month", "totalRides")
+      
+      ggplot(racMonth, aes(x=month, y=totalRides))+
+        geom_bar(stat="identity", fill="yellow3")+
+        scale_x_discrete(limits=c("Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"))+
+        labs(x="Month", y="Riders", title="Monthly Ridership at Racine station")
     }
   })
   
@@ -302,6 +370,12 @@ server <- function(input, output) {
       {
         oHareYear<-oHare[oHare$year == input$yearToPlot1, ]
         t<-aggregate(oHareYear$rides, list(oHareYear$month), FUN=sum)
+        colnames(t) <- c("month", "totalRides")
+      }
+      else if (input$station1 == "Racine")
+      {
+        racYear<-rac[rac$year == input$yearToPlot1, ]
+        t<-aggregate(racYear$rides, list(racYear$month), FUN=sum)
         colnames(t) <- c("month", "totalRides")
       }
       
@@ -338,6 +412,17 @@ server <- function(input, output) {
         scale_x_discrete(limits = c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"))+
         labs(x="Day of the Week", y="Total Riders", title="Total ridership by day of the week")
     }
+    else if (input$station1 == "Racine") {
+      racYear<-rac[rac$year == input$yearToPlot1, ]
+      racDay<-aggregate(racYear$rides, list(racYear$day), FUN=sum)
+      colnames(racDay) <- c("day", "totalRiders")
+      racDay<-racDay[order(racDay$day),]
+      
+      ggplot(racDay, aes(x=day, y=totalRiders))+
+        geom_bar(stat="identity", fill="yellow3")+
+        scale_x_discrete(limits = c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"))+
+        labs(x="Day of the Week", y="Total Riders", title="Total ridership by day of the week")
+    }
   })
   
   
@@ -355,6 +440,13 @@ server <- function(input, output) {
       {
         oHareYear<-oHare[oHare$year == input$yearToPlot1, ]
         t<-aggregate(oHareYear$rides, list(oHareYear$day), FUN=sum)
+        colnames(t) <- c("day", "totalRiders")
+        t<-t[order(t$day),]
+      }
+      else if (input$station1 == "Racine")
+      {
+        racYear<-rac[rac$year == input$yearToPlot1, ]
+        t<-aggregate(racYear$rides, list(racYear$day), FUN=sum)
         colnames(t) <- c("day", "totalRiders")
         t<-t[order(t$day),]
       }
